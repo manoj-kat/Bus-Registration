@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Busreservation.Models.DisplayBus>
+
+@{
+    ViewData["Title"] = "DisplayBus";
+    Layout = "~/Views/Shared/Userconsole.cshtml";
+}
+
+<head>
+    <style>
+        .bookbtn{
+            text-decoration: none;
+            color:black;
+        }
+        .bookbtn:hover{
+            text-decoration:none;
+            color:aliceblue;
+        }
+        .btnbus {
+            background-color: #8c84b4;
+            border-radius: 20px;
+            border: none;
+        }
+        .btnbus:hover {
+            background-color: #3c3484;
+            border-radius: 20px;
+            color:aliceblue;
+        }
+    </style>
+</head>
+<h1>Available Bus</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusCondition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusDestination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doj)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusCondition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusSource)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusDestination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doj)
+            </td>
+            <td>
+                <button class="btnbus" style="padding:8px 22px 8px 22px"><a asp-action="Book" asp-controller="User" asp-route-id="@item.BusId" class="bookbtn">Book</a></button>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

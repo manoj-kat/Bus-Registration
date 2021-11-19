@@ -1,0 +1,37 @@
+﻿@model Busreservation.Models.BusMaster
+
+@{
+    ViewData["Title"] = "BusDetails";
+    Layout = "~/Views/Shared/Dashbordlayout.cshtml";
+}
+
+<h1>BusDetails</h1>
+
+<div>
+    <h4>BusMaster</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistrationNo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistrationNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusCondition)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusCondition)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BusId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

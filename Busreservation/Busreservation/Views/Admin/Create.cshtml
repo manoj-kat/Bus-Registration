@@ -1,0 +1,46 @@
+﻿@model Busreservation.Models.BusMaster
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/Dashbordlayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>BusMaster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BusId" class="control-label"></label>
+                <input type="text" asp-for="BusId" class="form-control" />
+                <span asp-validation-for="BusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationNo" class="control-label"></label>
+                <input asp-for="RegistrationNo" class="form-control" />
+                <span asp-validation-for="RegistrationNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusName" class="control-label"></label>
+                <input asp-for="BusName" class="form-control" />
+                <span asp-validation-for="BusName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusCondition" class="control-label"></label>
+                <input asp-for="BusCondition" class="form-control" />
+                <span asp-validation-for="BusCondition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

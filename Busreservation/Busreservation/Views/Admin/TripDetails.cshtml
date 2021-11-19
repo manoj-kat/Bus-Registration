@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Busreservation.Models.TripDetail>
+
+@{
+    ViewData["Title"] = "TripDetails";
+    Layout = "~/Views/Shared/Dashbordlayout.cshtml";
+}
+
+<h1>TripDetails</h1>
+
+<p>
+    <a asp-action="CreateTrip">Add Trip</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TripDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfSeatsBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Route)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TripDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfSeatsBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bus.BusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.DriverName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.RouteId)
+            </td>
+            <td>
+                <a asp-action="EditTrip" asp-route-id="@item.TripCode">Edit</a> |
+                <a asp-action="DetailsTrip" asp-route-id="@item.TripCode">Details</a> |
+                <a asp-action="DeleteTrip" asp-route-id="@item.TripCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

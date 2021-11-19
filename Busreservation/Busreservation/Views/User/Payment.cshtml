@@ -1,0 +1,52 @@
+﻿@model Busreservation.Models.TransactDetail
+
+@{
+    ViewData["Title"] = "Payment";
+    Layout = "~/Views/Shared/Userconsole.cshtml";
+}
+
+<h3>Payment</h3>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Payment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PnrNo" class="control-label"></label>
+                <select asp-for="PnrNo" class ="form-control" asp-items="ViewBag.PnrNo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactTime" class="control-label"></label>
+                <input type="datetime-local" asp-for="TransactTime" class="form-control" />
+                <span asp-validation-for="TransactTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paymentstatus" class="control-label"></label>
+                <input asp-for="Paymentstatus" class="form-control" />
+                <span asp-validation-for="Paymentstatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentOption" class="control-label"></label>
+                <input asp-for="PaymentOption" class="form-control" />
+                <span asp-validation-for="PaymentOption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmount" class="control-label"></label>
+                <input asp-for="TotalAmount" class="form-control" />
+                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Pay" class="btn btn-primary" />
+                <input type="submit" value="Back" asp-action="Book" asp-controller="User" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

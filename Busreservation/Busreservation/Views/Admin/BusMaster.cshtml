@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Busreservation.Models.BusMaster>
+
+@{
+    ViewData["Title"] = "BusMaster";
+    Layout = "~/Views/Shared/Dashbordlayout.cshtml";
+}
+
+<h1>BusMaster</h1>
+
+<p>
+    <a asp-action="Create">Add Bus</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusCondition)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusCondition)
+            </td>
+            <td>
+                <a asp-action="EditBus" asp-route-id="@item.BusId">Edit</a> |
+                <a asp-action="BusDetails" asp-route-id="@item.BusId">Details</a> |
+                <a asp-action="DeleteBus" asp-route-id="@item.BusId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

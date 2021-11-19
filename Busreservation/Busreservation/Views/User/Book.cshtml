@@ -1,0 +1,89 @@
+﻿@model Busreservation.Models.Pnrdetail
+
+@{
+    ViewData["Title"] = "Book";
+    Layout = "~/Views/Shared/Userconsole.cshtml";
+}
+@*<p>
+    Welcome @ViewBag.Uid
+</p>*@
+
+<h3>Passenger Details</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Book">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" readonly />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusName" class="control-label">Bus Name</label>
+                @*<select asp-for="BusId" class="form-control" asp-items="ViewBag.BusId"></select>*@
+                <input asp-for="BusName" class="form-control" readonly />
+                <span asp-validation-for="BusName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookedOn" class="control-label">Booking Date</label>
+                <input type="date" asp-for="BookedOn" class="form-control" readonly />
+                <span asp-validation-for="BookedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassName" class="control-label">Passenger Name</label>
+                <input asp-for="PassName" class="form-control" />
+                <span asp-validation-for="PassName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassGender" class="control-label">Gender</label><br />
+                <input type="radio" value="Male" asp-for="PassGender" class="custom-radio" />
+                <label for="male">Male</label><br />
+                <input type="radio" value="Female" asp-for="PassGender" class="custom-radio" />
+                <label for="female">Female</label><br />
+                <input type="radio" value="other" asp-for="PassGender" class="custom-radio" />
+                <label for="female">other</label><br />
+                <span asp-validation-for="PassGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassAge" class="control-label">Age</label>
+                <input asp-for="PassAge" class="form-control" />
+                <span asp-validation-for="PassAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelFrom" class="control-label">From</label>
+                <input asp-for="TravelFrom" class="form-control" readonly/>
+                <span asp-validation-for="TravelFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelTo" class="control-label">To</label>
+                <input asp-for="TravelTo" class="form-control" readonly />
+                <span asp-validation-for="TravelTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doj" class="control-label">Date of Journey</label>
+                <input type="date" asp-for="Doj" class="form-control" readonly />
+                <span asp-validation-for="Doj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seatno" class="control-label"></label>
+                <input asp-for="Seatno" class="form-control" />
+                <span asp-validation-for="Seatno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fare" class="control-label"></label>
+                <input asp-for="Fare" value="800" readonly class="form-control" />
+                <span asp-validation-for="Fare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm" asp-action="Payment" asp-controller="User" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="DisplayBus" asp-controller="Passenger">Back</a>
+</div>*@
+

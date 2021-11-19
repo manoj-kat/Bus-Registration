@@ -1,0 +1,38 @@
+﻿@model Busreservation.Models.UserDetail
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserMail" class="control-label">User ID</label>
+                <input asp-for="UserMail" class="form-control" />
+                <span asp-validation-for="UserMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPass" class="control-label">Password</label>
+                <input type="password" asp-for="UserPass" class="form-control" />
+                <span asp-validation-for="UserPass" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+            <b>@ViewBag.Message</b>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Register" asp-controller="User">New User? Register</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
