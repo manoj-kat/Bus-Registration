@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Busreservation.Models.Pnrdetail>
+
+@{
+    ViewData["Title"] = "MyBookings";
+    Layout = "~/Views/Shared/Userconsole.cshtml";
+}
+
+<h1>MyBookings</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seatno)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Fare)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bus)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seatno)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Fare)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bus.BusName)
+                    </td>*@
+                <td>
+                    <a asp-action="PNRDetails" asp-route-id="@item.PnrNo">Details</a> |
+                    <a asp-action="DeletePNR" asp-route-id="@item.PnrNo">Cancel</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Search" asp-controller="Passenger" class="btn btn-primary">Back</a>
+</div>

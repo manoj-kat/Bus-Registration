@@ -1,0 +1,119 @@
+﻿@model Busreservation.Models.Pnrdetail
+
+@{
+    ViewData["Title"] = "PNRDetails";
+    Layout = "~/Views/Shared/Userconsole.cshtml";
+    var busnum = ViewData["busno"]!=null ? ViewData["busno"] : string.Empty;
+    var busname = ViewData["busname"] != null ? ViewData["busname"] : string.Empty;
+}
+
+<div id="divMainBody">
+    <h5 style="color: #3c3484; text-align:center; font-family:'Times New Roman', Times, serif;">Wizz Bus</h5>
+    <h6>Booking Details</h6>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.BusId)*@
+            @*@Html.Display("Bus Number")*@
+            <label>Bus Number</label>
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => busnum)*@
+            @busnum
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.UserId)*@
+            <label>Bus Name</label>
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => busnum)*@
+            @busname
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BookedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BookedOn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PassName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PassName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PassGender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PassGender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PassAge)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PassAge)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TravelFrom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TravelFrom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TravelTo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TravelTo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doj)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doj)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Seatno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Seatno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fare)
+        </dd>
+    </dl>
+</div>
+<div>
+    <script src="html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <a id="printPDF" class="btn-info" style="cursor:pointer">Print</a>|
+    <a asp-action="PNRBooking">Back</a>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $("#printPDF").click(function () {
+            var element = document.getElementById('divMainBody');
+            html2pdf().from(element).set({
+                margin: [15, 30, 1, 10], //top, left, buttom, right,
+                pagebreak: { avoid: 'tr' },
+                jsPDF: { orientation: 'landscape', unit: 'pt', format: 'letter', compressPDF: true }
+            }).save()
+
+            //var html = $("#divMainBody").html();
+            //html = html.replace(/</g, "start").replace(/</g, "end");
+
+            //window.open("/Home/PrintPdf?html=" + html, "_blank");
+
+
+        });
+    </script>
+
+}
